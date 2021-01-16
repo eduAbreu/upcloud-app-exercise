@@ -25,10 +25,10 @@ const styles = css`
   .app-nav {
     display: flex;
     justify-content: space-around;
-  }
-
-  a {
-    margin-left: rem(10px);
+    
+    a + a {
+      margin-left: rem(10px);
+    }
   }
 `;
 

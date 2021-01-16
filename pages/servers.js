@@ -1,10 +1,13 @@
 import React from "react";
+import Wrapper from 'components/Wrapper';
+import ServerData from 'components/ServerData';
+
 import { getServers } from '../api/server';
+
 
 export const getStaticProps= async () => {
     const serversData = await getServers();
 
-    console.log(serversData);
     return {
       props: {
         serversData
@@ -13,20 +16,12 @@ export const getStaticProps= async () => {
 }
 
 const Servers = ({ serversData }) => {
-    const host = "name";
     return (
-        <div>
-            <div>
-                Servers
+        <Wrapper>
+            <div style={{ marginTop: '1rem' }}>
+                <ServerData data={serversData.data} />
             </div>
-            <div>
-                <div>server status</div>
-                <div>
-                    <p>server</p>
-                    <span>{`Hostname: ${host}`}</span>
-                </div>
-            </div>
-        </div>
+        </Wrapper>
     )
 };
 

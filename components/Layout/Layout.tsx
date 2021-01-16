@@ -32,8 +32,12 @@ class Layout extends React.Component {
               alt="UpCloud logo"
             />
             <nav className="app-nav">
-              <Link href="/servers">Servers</Link>
-              <Link href="/storages">Storages</Link>
+              <Link href="/servers" passHref>
+                <a>Servers</a>
+              </Link>
+              <Link href="/storages" passHref>
+                <a>Storages</a>
+              </Link>
             </nav>
           </Wrapper>
         </header>
