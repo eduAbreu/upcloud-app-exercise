@@ -3,6 +3,7 @@ import { default as NextApp, AppContext } from 'next/app';
 import Head from 'next/head';
 import Layout from 'components/Layout';
 import ClientOnly from 'components/ClientOnly';
+import Loading from 'components/Loading';
 
 class App extends NextApp {
   static async getInitialProps({ Component, ctx }: AppContext) {
@@ -17,7 +18,6 @@ class App extends NextApp {
 
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       <>
         <Head>
@@ -31,7 +31,9 @@ class App extends NextApp {
         {/* for simplicity, we run everything on Client Only in this project, ignoring Next.js's SSR */}
         <ClientOnly>
           <Layout>
-            <Component {...pageProps} />
+            <Loading>
+              <Component {...pageProps} />
+            </Loading>
           </Layout>
         </ClientOnly>
       </>

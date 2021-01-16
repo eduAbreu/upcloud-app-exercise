@@ -10,7 +10,7 @@ const styles = css`
 
         &:hover {
             .server-state {
-                animation: pulse 0.6s ease-in-out infinite alternate;
+                animation: pulse 1s ease-in-out infinite alternate;
             }
         }
     }
@@ -48,7 +48,7 @@ const styles = css`
         transform: scale(1);
         }
         50% {
-            transform: scale(1.1);
+            transform: scale(1.2);
         }
         100% {
             transform: scale(1);

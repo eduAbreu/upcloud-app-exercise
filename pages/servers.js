@@ -7,7 +7,7 @@ import { getServers } from '../api/server';
 
 export const getStaticProps= async () => {
     const serversData = await getServers();
-
+    
     return {
       props: {
         serversData

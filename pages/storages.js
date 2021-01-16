@@ -22,24 +22,15 @@ const styles = css`
 
 export const getStaticProps= async () => {
     const storagesData = await getStorage();
-
-    const normalizedStorages = storagesData.data.reduce((acc, storage) => {
-        if(acc[storage['access']]) {
-            acc[storage['access']].push( storage )
-        } else {
-            acc[storage['access']] = [ storage ]
-        }
-        return acc;
-    }, {});
     
     return {
       props: {
-        normalizedStorages
+        storagesData
       }
     }
 }
 
-const Servers = ({ normalizedStorages }) => (
+const Servers = ({ storagesData: { data } }) => (
     <Wrapper>
         <div style={{ marginTop: '1rem' }}>
             <Card>
@@ -47,11 +38,11 @@ const Servers = ({ normalizedStorages }) => (
                 <Card.Head title="Storages" />
                 <Card.Content>
                     {
-                        Object.keys(normalizedStorages).map((access) => (                                
+                        Object.keys(data).map((access) => (                                
                             <ul key={`storage-${access}`}>
                                 <h4 className="storage-title">{access}</h4>
                                 {
-                                    normalizedStorages[access].map(({ uuid, title, size }) => (                                
+                                    data[access].map(({ uuid, title, size }) => (                                
                                         <li key={`storage-${uuid}`}>
                                             {title}
                                             <span className="storage-size">{`(${size} GB)`}</span>
